@@ -74,4 +74,4 @@ public class CustomerTest {
 }
 
 ## 3. Результат виконання програми
-[](https://github.com/ppc-ntu-khpi/java-1-kkkseeekk/blob/main/Solution/%D0%9F%D1%801%D0%9A%D0%BE%D0%B7%D0%BB%D0%BE%D0%B2%D0%B0%D0%A1%D0%BA%D1%80%D1%96%D0%BD%D1%88%D0%BE%D1%82.png)
+<https://github.com/ppc-ntu-khpi/java-1-kkkseeekk/blob/main/Solution/%D0%9F%D1%801%D0%9A%D0%BE%D0%B7%D0%BB%D0%BE%D0%B2%D0%B0%D0%A1%D0%BA%D1%80%D1%96%D0%BD%D1%88%D0%BE%D1%82.png>
