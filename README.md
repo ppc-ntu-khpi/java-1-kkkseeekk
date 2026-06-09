@@ -1,41 +1,78 @@
+[![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-2972f46106e565e64193e422d61a12cf1da4916b45550586e14ef0a7c637dd04.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=24051287)
 # Створення класів
 
 Це друга лабораторна робота в нашому курсі з ООП, в ході якої ви маєте отримати навички зі створення класів та тестування їх працездатності. Робота дуже маленька та складається з двох завдань.
 
-## Завдання 1. Створення класу з атрибутами
+## 1. Код класу `Customer.java` (пакет `domain`)
 
-1. **клонуйте** створений для вас репозиторій в Netbeans (детальна інструкція з картинками є [тут](https://netbeans.apache.org/tutorial/main/kb/docs/ide/git/)), **відкрийте** в [Repl.It](https://repl.it/) ([ось](https://docs.replit.com/replit-workspace/using-git-on-replit/running-github-repositories-replit)) покрокова інструкція з картинками), чи [GitHub CodeSpace](https://github.com/features/codespaces) (згадайте минулий семестр!), або **просто завантажте** його вміст у ZIP-форматі (скориставшись кнопкою "Code" > "Download ZIP") і відкрийте в IDE за вашим вибором
-2. створіть **в пакеті ````domain````** клас ```` Сustomer ```` з такими **приватними атрибутами**:
-    * ````ID```` (номер клієнта, **ціле** число)
-    * ````isNew```` (статус клієнта новий він чи старий, **булевське** значення)
-    * ````total```` (сума замовлень за рік, **дробове** число)
-3. атрибути повинні мати **значення за замовчуванням** (наприклад, ````1```` для ````ID````, ````true```` для ````isNew````, ````1000```` для ````total````, див. відеозапис лекції).
+```java
+package domain;
 
-**УВАГА! Repl.It на даний момент не підтримує пакети, тож краще виконувати роботу в Netbeans!** Якщо виконуєте в Repl.It - робите як минулого разу - все в дефолтному пакеті (й не забувайте про файли ````.replit```` і ````start.sh````!).
+public class Customer {
+    private int id;
+    private boolean isNew;
+    private double total;
 
-## Завдання 2. Додавання в клас методів 
+    public Customer() {
+        this.id = 1;
+        this.isNew = true;
+        this.total = 3101.0;
+    }
 
-Додати до класу метод ````displayCustomerInfo````, який виводить на консоль інформацію про клієнта з допомогою ````System.out.println````. Кожен рядок має містити відповідну мітку, наприклад, "Total purchases are:" (див. перердню роботу).
+    public void displayCustomerInfo() {
+        System.out.println("Customer ID: " + id);
+        System.out.println("Is new customer: " + isNew);
+        System.out.println("Total purchases are: $" + total);
+    }
 
+    public void setID(int id) {
+        if (id > 0) {
+            this.id = id;
+        } else {
+            System.out.println("Error: ID must be positive!");
+        }
+    }
 
-## Перевірка працездатності створеного класу
+    public void setStatus(boolean isNew) {
+        this.isNew = isNew;
+    }
 
-1. Створити в **пакеті ````test````** клас ````CustomerTest````, в методі ````main```` якого створити об'єкт класу ```` Сustomer ```` та вивести на екран його властивості з допомогою методу ````displayCustomerInfo```` (див. відеозапис лекції). 
-2. **запустіть** його (<kbd>F6</kbd> у NetBeans для запуску головного виконуваного файлу, <kbd>SHIFT</kbd>+<kbd>F6</kbd> - для запуску поточного файлу)
-3. зробіть та збережіть (тека **Solution**) у файл ````done.png```` **скріншот** результатів роботи програми 
+    public void setTotal(double total) {
+        if (total >= 0) {
+            this.total = total;
+        } else {
+            System.out.println("Error: Total purchases cannot be negative!");
+        }
+    }
 
-**На завершення виконання лабораторної роботи закомітьте ваш проект до репозиторію та здайте завдання через Google Classroom, вказавши посилання на Ваш репозиторій.**
+    public int getID() { return id; }
+    public boolean isNew() { return isNew; }
+    public double getTotal() { return total; }
+}
 
-:triangular_flag_on_post: **УВАГА!** Ваша оцінка залежить від того, що саме було вами зроблено:
-* на "**три**" - просто виконані перелічені вище завдання
-* на "**чотири**" - те, що на "три", плюс, добре оформлений файл змініть файл ````README.md````  - з кодом класу ```` Сustomer ```` та скріншотом роботи програми
-* на "**п'ять**" - те, що на "чотири", плюс, змінити код класу наступним чином:
-  * додати **конструктор за замовчуванням**, який ініціалізує атрибути початковими значеннями (див. відеозапис лекції) 
-  * додати **методи для зміни атрибутів** - ````setID````, ````setStatus````, ````setTotal```` з відповідними параметрами та перевіркою присвоюваних значень (можуть або нічого не повертати, або повертати булевське значення, див. відеозапис лекції). 
-**Підказка:** натисніть в Netbeans <kbd>Alt</kbd> + <kbd>Insert</kbd> і оберіть пункт "Getter and Setter..." - Netbeans напише все замість вас!
-![](https://github.com/ppc-ntu-khpi/Class-Starter/raw/main/images/GetterAndSetter.png)
-  * **використати ці методи** в методі в методі ````main```` класу````CustomerTest````
-  * зробити та зберегти (тека **Solution**) у файл ````advanced.png```` **скріншот** результатів роботи програми, та модифікувати файл ````README.md````відповідним чином
+## 2. Код класу `CustomerTest.java` (пакет `test`)
 
+package test;
 
+import domain.Customer;
 
+public class CustomerTest {
+    public static void main(String[] args) {
+        Customer customer = new Customer();
+
+        System.out.println("Default Customer Info");
+        customer.displayCustomerInfo();
+        customer.setID(81);
+        customer.setStatus(false);
+        customer.setTotal(2377.67);
+
+        System.out.println("\n Updated Customer Info");
+        customer.displayCustomerInfo();
+        
+        System.out.println("\n Testing Validation");
+        customer.setTotal(-500); 
+    }
+}
+```
+## 3. Результат виконання програми
+![Solution](https://github.com/ppc-ntu-khpi/java-1-kkkseeekk/blob/main/Solution/%D0%9F%D1%801%D0%9A%D0%BE%D0%B7%D0%BB%D0%BE%D0%B2%D0%B0%D0%A1%D0%BA%D1%80%D1%96%D0%BD%D1%88%D0%BE%D1%82.png)
